@@ -1,0 +1,48 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Überspringen</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false">
+ 
+    <ion-slide>
+      <img style=" width: 30%;
+      height: auto;" src="assets/img/logo.png" class="slide-image" />
+      <h2 class="slide-title">
+        Wilkommen bei
+        <b>MAVAEL</b>
+      </h2>
+      <p>
+        The
+        <b> MAVAEL Blog </b>DEMO
+      </p>
+    </ion-slide>
+  
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-2.png" class="slide-image" />
+      <h2 class="slide-title">What is Ionic?</h2>
+      <p>
+        <b>MAVAEL</b>DEMO 2</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-3.png" class="slide-image" />
+      <h2 class="slide-title">What is Ionic Appflow?</h2>
+      <p>
+        <b>MAVAEL Appflow</b>DEMO 3</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
+      <h2 class="slide-title">Weiter?</h2>
+      <ion-button fill="clear" (click)="startApp()">
+        Weiter
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

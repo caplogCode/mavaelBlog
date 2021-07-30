@@ -1,0 +1,155 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons *ngIf="!showSearchbar" slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-segment  *ngIf="ios" [(ngModel)]='segmentModel' (ionChange)='segmentChanged($event)' value='all'>
+      <ion-segment-button value='feed'>
+        <ion-label>Feed</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value='news'>
+        <ion-label>Posts</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-title *ngIf="!ios && !showSearchbar"><b><a>MAVAEL</a></b></ion-title>
+    <ion-badge slot="end" color="success">Posts:{{getAllPosts()}}</ion-badge>
+    <ion-searchbar *ngIf="showSearchbar" showCancelButton="always" [(ngModel)]="queryText" (ionChange)="updateSchedule()" (ionCancel)="showSearchbar = false" placeholder="Search"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!ios && !showSearchbar" (click)="showSearchbar = true">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="!showSearchbar" (click)="presentFilter()">
+        <span *ngIf="ios">Filter</span>
+        <span *ngIf="!ios">
+          <ion-icon slot="icon-only" name="options"></ion-icon>
+        </span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="!ios">
+    <ion-segment [(ngModel)]='segmentModel' (ionChange)='segmentChanged($event)' value='all'>
+      <ion-segment-button value="feed">
+        Feed
+      </ion-segment-button>
+      <ion-segment-button value="news">
+        Posts
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Feed</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar [(ngModel)]="queryText" (ionChange)="updateSchedule()" placeholder="Search"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+<ng-container *ngIf="segmentModel === 'feed'">
+  <ion-card color={{post.cardColor}} button *ngFor="let post of posts">
+    <ion-card-header>
+        <div style="text-align: end;">
+      <ion-badge color="{{postHandlerColor(post.uid)}}" shape="block" >{{postSignatureHandler(post.uid)}}</ion-badge>
+        </div>
+      <ion-card-title>{{post.title}}</ion-card-title>
+      <ion-card-subtitle>
+        <ion-chip>
+          <ion-avatar>
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+          <ion-label>{{post.user}}</ion-label>
+        </ion-chip>
+      </ion-card-subtitle>
+
+      <div style="text-align: end;">
+        
+      <ion-text >{{post.timestamp}}</ion-text>
+    </div>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item-sliding>
+        <ion-card>
+      <ion-item>
+        <ion-label>{{post.body}}</ion-label>
+      </ion-item>
+    </ion-card>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deletePost(post.postId)">LÖSCHEN</ion-item-option>
+        <ion-item-option color="warning" (click)="editPost(post.postId)">BEARBEITEN</ion-item-option>
+        <ion-item-option color="success" (click)="done(post.postId)">SPEICHERN</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-card-content>
+  </ion-card>
+</ng-container>
+<ng-container *ngIf="segmentModel === 'news'">
+<label>Test</label>
+</ng-container>
+<!--   <ion-list #scheduleList [hidden]="shownSessions === 0">
+    <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
+      <ion-item-divider sticky>
+        <ion-label>
+          {{group.time}}
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem [attr.track]="session.tracks[0] | lowercase"
+        [hidden]="session.hide">
+        <ion-item routerLink="/app/tabs/schedule/session/{{session.id}}">
+          <ion-label>
+            <h3>{{session.name}}</h3>
+            <p>
+              {{session.timeStart}} &mdash; {{session.timeEnd}}: {{session.location}}
+            </p>
+          </ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
+            Favorite
+          </ion-item-option>
+          <ion-item-option color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')"
+            *ngIf="segment === 'favorites'">
+            Remove
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>  -->
+  <ion-list-header [hidden]="shownSessions > 0">
+   <!-- Ende der Seite -->
+  </ion-list-header>
+
+<!--   <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>
+    <ion-fab-button (click)="navToPost()">
+      <ion-icon name="add" color="secondary"></ion-icon>
+    </ion-fab-button>
+
+  </ion-fab> -->
+
+
+  <!--     <ion-fab-list side="top">
+      <ion-fab-button color="vimeo" (click)="openSocial('Vimeo', fab)">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="instagram" (click)="openSocial('Instagram', fab)">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="twitter" (click)="openSocial('Twitter', fab)">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="facebook" (click)="openSocial('Facebook', fab)">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list> -->
+    <ion-refresher slot="fixed" (ionRefresh)='doRefresh($event)'>
+        <ion-refresher-content
+          pullingIcon="chevron-down-circle-outline"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+</ion-content>

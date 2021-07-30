@@ -1,0 +1,48 @@
+<ion-content>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="center" #fab>
+    <ion-fab-button (click)="navToPost()">
+      <ion-icon name="add" color="secondary"></ion-icon>
+    </ion-fab-button>
+<!--     <ion-fab-list side="top">
+      <ion-fab-button color="vimeo" (click)="openSocial('Vimeo', fab)">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="instagram" (click)="openSocial('Instagram', fab)">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="twitter" (click)="openSocial('Twitter', fab)">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="facebook" (click)="openSocial('Facebook', fab)">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list> -->
+  </ion-fab>
+  <ion-tabs>
+
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="schedule">
+        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        <ion-label>Feed</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="speakers">
+        <ion-icon name="people"></ion-icon>
+        <ion-label>Kontakte</ion-label>
+      </ion-tab-button>
+  <ion-content >
+    <ion-button [hidden]="true">Test</ion-button>
+  </ion-content>
+      <ion-tab-button tab="map">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>Suchen</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="account">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Profil</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  
+  </ion-tabs>
+</ion-content>

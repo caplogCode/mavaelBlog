@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Beitrag verfassen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <ion-card>
+    <ion-item >
+       <ion-input placeholder="Titel" required type="text" [(ngModel)]="title" name="title"> </ion-input>
+    </ion-item>
+ </ion-card>
+ 
+<ion-card>
+     <ion-item >
+     <ion-textarea placeholder="Beitrag..." rows="14" cols="80" required type="text" [(ngModel)]="body"  name="body"> </ion-textarea>
+   </ion-item>
+</ion-card> 
+
+
+ <ion-button class="ion-padding" expand="block" shape="round" (click)="test()">Posten</ion-button>
+
+ <ion-grid>
+  <ion-row class="forecast_container">
+  <ion-col col-6 *ngFor="let photo of photos">
+      <img [src]="photo.data" />
+      </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+</ion-fab> -->
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button>
+    <ion-icon name="share"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="start">
+    <ion-fab-button (click)="takePicture()">
+      <ion-icon name="cloud-upload-outline"></ion-icon>
+    </ion-fab-button>
+  
+    <ion-fab-button (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+ </ion-fab-list>
+</ion-fab>
+</ion-content>

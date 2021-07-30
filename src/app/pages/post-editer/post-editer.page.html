@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>post-editer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item >
+       <ion-input placeholder="Titel" required type="text" [(ngModel)]="title" name="title"> </ion-input>
+    </ion-item>
+ </ion-card>
+ 
+<ion-card>
+     <ion-item >
+     <ion-textarea placeholder="Beitrag..." rows="14" cols="80" required type="text" [(ngModel)]="body"  name="body"> </ion-textarea>
+   </ion-item>
+</ion-card> 
+
+
+ <ion-button expand="block" shape="round" (click)="updatePost()">Aktualisieren</ion-button>
+
+</ion-content>

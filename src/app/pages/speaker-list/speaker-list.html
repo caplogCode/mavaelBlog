@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Empfehlungen</ion-title>
+       <ion-badge style="margin-right: 10px" slot="end" color="success">Benutzer: {{getAllUsers()}}</ion-badge>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ng-container *ngFor="let user of users">
+      <ion-card color={{getCardColorForLetter(user.username)}} button (click)="test(user.username)">
+    <ion-card-header>
+      <ion-card-subtitle>{{user.email}}</ion-card-subtitle>
+      <ion-card-title>{{user.username}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+  </ng-container>
+
+</ion-content>

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "module": "esnext",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+    }
+  },
+  "dependent_plugins": {}
+}
