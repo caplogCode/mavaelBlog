@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Entdecken</ion-title>
+
+    <ion-badge style="margin-right: 10px" slot="end" color="success"
+      >Benutzer: {{getAllUsers()}}</ion-badge
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ng-container *ngFor="let user of users">
+    <ion-card color="{{getCardFomatColor(getRandomNumber(17))}}" button (click)="addUserDataTempToStorage(user.name, user.hobby, user.beschreibung)">
+      <ion-card-header>
+        <ion-card-subtitle>{{user.email}}</ion-card-subtitle>
+
+        <ion-card-title>{{user.name}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-card *ngIf="makePostToArray(user.lastPostId)">
+          <ng-container>
+            <ion-item>
+              <br />
+
+              <ion-text>
+                <h1>{{title}}</h1>
+
+                <!-- <h4>{{body}}</h4> -->
+              </ion-text>
+            </ion-item>
+          </ng-container>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>

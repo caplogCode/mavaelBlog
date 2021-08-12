@@ -2,8 +2,8 @@
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button (click)="onChangeIndex()" color="primary">
-        {{onChangeTitle()}}</ion-button>
-     <!--  <ion-menu-button></ion-menu-button> -->
+        {{onChangeTitle()}}</ion-button
+      >
     </ion-buttons>
 
     <ion-title>{{onChangeTitle()}}</ion-title>
@@ -12,48 +12,6 @@
 
 <ion-content>
   <ion-card class="ion-padding">
- <div id="firebaseui-auth-container"></div>
-</ion-card>
-  <!-- <div class="login-logo">
-    <img src="assets/img/logo.png" alt="Ionic logo">
-  </div>
-
-  <form #loginForm="ngForm" novalidate>
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked" color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="login.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off"
-          required>
-        </ion-input>
-      </ion-item>
-
-      <ion-text color="danger">
-        <p [hidden]="email.valid || submitted == false" class="ion-padding-start">
-          Username is required
-        </p>
-      </ion-text>
-
-      <ion-item>
-        <ion-label position="stacked" color="primary">Password</ion-label>
-        <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
-        </ion-input>
-      </ion-item>
-
-      <ion-text color="danger">
-        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
-          Password is required
-        </p>
-      </ion-text>
-    </ion-list>
-
-    <ion-row>
-      <ion-col>
-        <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
-      </ion-col>
-    </ion-row>
-  </form> -->
-  
+    <div id="firebaseui-auth-container"></div>
+  </ion-card>
 </ion-content>

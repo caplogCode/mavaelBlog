@@ -20,7 +20,7 @@ export class PostsService {
 
   constructor(private afs: AngularFirestore) {
     this.mavaelCol = this.afs.collection("posts", (ref) =>
-      ref.orderBy("timestamp", "desc")
+      ref.orderBy("timestampMillis", "desc")
     );
 
     this.posts = this.mavaelCol.snapshotChanges().pipe(
@@ -38,8 +38,9 @@ export class PostsService {
     return this.posts;
   }
 
+
   getPost(postId) {
-    var posting = "post/" + postId;
+    var posting = "posts/" + postId;
     this.mavaelDoc = this.afs.doc<BlogPost>(posting);
     return (this.post = this.mavaelDoc.valueChanges());
   }

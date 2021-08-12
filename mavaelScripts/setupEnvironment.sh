@@ -7,7 +7,6 @@ COLOR_INFO='\033[0;33m'
 COLOR_NULL='\033[0;38m'
 bold=$(tput bold)
 
-
 echo -e "${COLOR_WARN}${bold}WARNING: ${COLOR_INFO}${bold} node must be installed to run this application!"
 
 echo
@@ -37,36 +36,72 @@ echo
 
 echo -e "Do you want to run ${COLOR_WARN}${bold}M${COLOR}${bold}A${COLOR_INFO}${bold}V${COLOR_WARN}${bold}A${COLOR_NULL}${bold}E${COLOR}${bold}L${COLOR_NULL} ?"
 select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) 
-echo -e "${COLOR_WARN}${bold}Open Project in Browser"
-echo -e "${COLOR}${bold}==============================================================================================================="
-python -m webbrowser localhost:4200/
+      case $yn in
+      Yes)
+            echo -e "${COLOR_WARN}${bold}Open Project in Browser"
+            echo -e "${COLOR}${bold}==============================================================================================================="
 
-echo
+            if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+                  ionic serve
+                  python -m webbrowser localhost:8100/
+            elif [[ "$OSTYPE" == "darwin"* ]]; then
+                  ionic serve
+                  python -m webbrowser localhost:8100/
+            elif [[ "$OSTYPE" == "cygwin" ]]; then
+                  ionic serve
+                  python -m webbrowser localhost:8100/
+            elif [[ "$OSTYPE" == "msys" ]]; then
+                  echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
+                  echo -e "${COLOR}${bold}==============================================================================================================="
+                  npm install -g @angular/cli
 
-echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
-echo -e "${COLOR}${bold}==============================================================================================================="
-npm install -g @angular/cli
+                  echo
 
-echo
+                  echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
+                  echo -e "${COLOR}${bold}===============================================================================================================${COLOR_NULL}"
+                  ng update
+                  ng serve
+                  start "" http://localhost:4200/
+            elif [[ "$OSTYPE" == "win32" ]]; then
+                  echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
+                  echo -e "${COLOR}${bold}===============================================================================================================${COLOR_NULL}"
+                  npm install -g @angular/cli
 
-echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
-echo -e "${COLOR}${bold}==============================================================================================================="
-ng update
+                  echo
 
-echo
+                  echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
+                  echo -e "${COLOR}${bold}==============================================================================================================="
+                  ng update
+                  ng serve
+                  start "" http://localhost:4200
+            elif [[ "$OSTYPE" == "freebsd"* ]]; then
+                  echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
+                  echo -e "${COLOR}${bold}==============================================================================================================="
+                  npm install -g @angular/cli
 
-echo -e "${COLOR_WARN}${bold}Open Project in Browser"
-echo -e "${COLOR}${bold}==============================================================================================================="
-python -m webbrowser localhost:4200/
+                  echo
 
-echo
+                  echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
+                  echo -e "${COLOR}${bold}==============================================================================================================="
+                  ng update
+                  ng serve
+                  start "" http://localhost:4200
+            else
+                  echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
+                  echo -e "${COLOR}${bold}==============================================================================================================="
+                  npm install -g @angular/cli
 
-echo -e "${COLOR_WARN}${bold}Running MAVAEL"
-echo -e "${COLOR}${bold}==============================================================================================================="
-ng serve; break;;
-        No ) exit;;
-    esac
+                  echo
+
+                  echo -e "${COLOR_WARN}${bold}Installing Angular CLI"
+                  echo -e "${COLOR}${bold}===============================================================================================================${COLOR_NULL}"
+                  ng update
+                  ng serve
+                  start "" http://localhost:4200/
+            fi
+            echo
+            echo break
+            ;;
+      No) exit ;;
+      esac
 done
-

@@ -1,8 +1,19 @@
-.forecast_container{
-    overflow-x: scroll!important;
-    overflow-y: hidden;
-    word-wrap: break-word;
-    height:20vw;
-    font-size:0.8em;
-    font-weight:300;
-  }
+/* ion-chip.disabled:hover
+{cursor: unset;
+background-color: rgba(12, 209, 232, 0.08)
+} */
+.forecast_container {
+  overflow-x: scroll !important;
+  overflow-y: hidden;
+  word-wrap: break-word;
+  height: 20vw;
+  font-size: 0.8em;
+  font-weight: 300;
+}
+
+ion-card {
+  border-radius: 30px !important;
+}
+ion-item {
+  border-radius: 30px !important;
+}

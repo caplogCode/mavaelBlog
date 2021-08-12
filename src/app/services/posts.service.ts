@@ -17,7 +17,8 @@ export class PostsService {
 
 
 
-
+//Es wird auf allen Posts gemappt und asyncron gespeichert, damit man ggf. auch ohne Internet Connection in realtime weiter machen kann
+//mit rxJs
   constructor(
     private afs: AngularFirestore
   ) {

@@ -1,1 +1,1 @@
-{"plugins":["cordova-plugin-device","cordova-plugin-inappbrowser","cordova-plugin-splashscreen","cordova-plugin-whitelist","cordova-plugin-ionic-webview","cordova-plugin-statusbar","cordova-plugin-ionic-keyboard","cordova-sqlite-storage","cordova-plugin-camera"]}
+{"plugins":["cordova-plugin-device","cordova-plugin-inappbrowser","cordova-plugin-splashscreen","cordova-plugin-whitelist","cordova-plugin-ionic-webview","cordova-plugin-statusbar","cordova-plugin-ionic-keyboard","cordova-sqlite-storage","cordova-plugin-camera","com.moust.cordova.videoplayer"]}

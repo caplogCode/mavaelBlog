@@ -3,7 +3,12 @@ export interface Mavael {
     username : string,
     email : string,
     createdAt: number,
-    status: string
+    status: string,
+    lastPostId: string,
+    uid: string, 
+    name: string,
+    hobby: string,
+    beschreibung: string
 }
 
 export interface BlogPost {
@@ -13,5 +18,10 @@ export interface BlogPost {
     timestamp : number,
     user: string,
     cardColor: string,
-    uid: string
+    uid: string,
+    tags: string,
+    like: number,
+    dislike: number,
+    likers: string,
+    bookMarkers: string
 }

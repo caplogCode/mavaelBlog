@@ -8,7 +8,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { AppComponent } from './app.component';
-import { UserData } from './providers/user-data';
 
 describe('AppComponent', () => {
   let menuSpy,

@@ -38,3 +38,9 @@ echo
 echo -e "${COLOR_WARN}${bold}Changing Permission of ${COLOR_INFO}runProject.sh ${COLOR_NULL}"
 echo -e "${COLOR}${bold}===============================================================================================================${COLOR_NULL}"
 chmod 755 mavaelScripts/runProject.sh
+
+echo
+
+echo -e "${COLOR_WARN}${bold}Changing Permission of ${COLOR_INFO}deployFirebaseHosting.sh ${COLOR_NULL}"
+echo -e "${COLOR}${bold}===============================================================================================================${COLOR_NULL}"
+chmod 755 mavaelScripts/deployFirebaseHosting.sh

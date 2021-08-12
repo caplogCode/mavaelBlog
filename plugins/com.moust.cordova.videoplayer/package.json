@@ -1,0 +1,65 @@
+{
+  "_from": "git+https://github.com/moust/cordova-plugin-videoplayer.git",
+  "_id": "cordova-plugin-video-player@1.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-video-player",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/moust/cordova-plugin-videoplayer.git",
+    "rawSpec": "https://github.com/moust/cordova-plugin-videoplayer.git",
+    "saveSpec": "git+https://github.com/moust/cordova-plugin-videoplayer.git",
+    "fetchSpec": "https://github.com/moust/cordova-plugin-videoplayer.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/moust/cordova-plugin-videoplayer.git#bfbd5ff21411e5997e7c9f734841e2089ba361ed",
+  "_spec": "https://github.com/moust/cordova-plugin-videoplayer.git",
+  "_where": "/Users/markus/mavaelGit/mavaelNewGit/mavael",
+  "author": {
+    "name": "Quentin Aupetit"
+  },
+  "bugs": {
+    "url": "https://github.com/moust/cordova-plugin-videoplayer/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-video-player",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "A Codova plugin that simply allows you to immediately play a video in fullscreen mode.",
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/moust/cordova-plugin-videoplayer#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova",
+    "video",
+    "player",
+    "fullscreen"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-video-player",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moust/cordova-plugin-videoplayer.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1"
+}

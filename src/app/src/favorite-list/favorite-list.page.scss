@@ -1,0 +1,15 @@
+ion-card {
+    border-radius: 30px !important;
+  }
+  ion-item {
+    border-radius: 30px !important;
+  }
+  .scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  
+    .card {
+      display: inline-block;
+    }
+  }

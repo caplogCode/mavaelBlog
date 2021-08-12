@@ -17,7 +17,8 @@ export class MavaelService {
 
 
 
-
+//Es wird auf allen Usern gemappt und asyncron gespeichert, damit man ggf. auch ohne Internet Connection in realtime weiter machen kann
+//mit rxJs
   constructor(
     private afs: AngularFirestore
   ) {

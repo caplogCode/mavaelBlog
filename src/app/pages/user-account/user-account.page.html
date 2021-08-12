@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-buttons slot="end">
+    <ion-button color="primary" (click)="startApp()" [hidden]="!showSkip"
+      >Überspringen</ion-button
+    >
+  </ion-buttons>
+</ion-header>
+
+<body>
+  <ion-content [scrollY]="true">
+    <img
+      style="position: absolute; width: 100%; height: 100%"
+      src="../../../assets/img/logo.png"
+    />
+    <ion-infinite-scroll-content>
+      <ion-card>
+        <ion-list  style="text-align: center" class="scrolling-wrapper">
+          <ion-text
+            style="text-align: center; font-size: 20px"
+            fill="outline"
+            size="large"
+            >0</ion-text
+          >
+          <ion-button
+            style="text-align: center; visibility: hidden; width: 38%"
+            size="default"
+            block
+            >Follower</ion-button
+          >
+          <ion-text
+            style="text-align: center; font-size: 20px"
+            fill="outline"
+            size="large"
+            >0</ion-text
+          >
+        </ion-list>
+        <ion-list style="text-align: center" class="scrolling-wrapper">
+          <ion-button
+            style="text-align: center; width: 40%"
+            fill="outline"
+            size="default"
+            >Follower</ion-button
+          >
+          <ion-button
+            style="text-align: center; width: 40%"
+            fill="outline"
+            size="default"
+            >Folge ich</ion-button
+          >
+        </ion-list>
+        <ion-list>
+          <h2 style="margin-left: 20px; text-align: left">{{username}}</h2>
+
+          <ion-badge
+            style="float: left; margin-left: 20px; text-align: right !important"
+            >{{hobby}}</ion-badge
+          >
+          <br />
+          <br />
+          <br />
+          <ion-button
+            style="margin-left: 20px; margin-right: 20px"
+            expand="block"
+            routerLink="/account"
+            >Profil bearbeiten</ion-button
+          >
+
+          <ion-textarea>
+            <p class="ion-padding">
+              {{beschreibung}}
+            </p>
+          </ion-textarea>
+        </ion-list>
+      </ion-card>
+    </ion-infinite-scroll-content>
+  </ion-content>
+</body>

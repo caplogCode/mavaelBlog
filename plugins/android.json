@@ -8,29 +8,29 @@
   },
   "installed_plugins": {
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+      "PACKAGE_NAME": "com.mavael.mavaelblogapp"
     },
     "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+      "PACKAGE_NAME": "com.mavael.mavaelblogapp"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+      "PACKAGE_NAME": "com.mavael.mavaelblogapp"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+      "PACKAGE_NAME": "com.mavael.mavaelblogapp"
     },
     "cordova-plugin-ionic-webview": {
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
-      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+      "PACKAGE_NAME": "com.mavael.mavaelblogapp"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+      "PACKAGE_NAME": "com.mavael.mavaelblogapp"
     },
     "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+      "PACKAGE_NAME": "com.mavael.mavaelblogapp"
     },
     "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "com.ionicframework.conferenceapp"
+      "PACKAGE_NAME": "com.mavael.mavaelblogapp"
     }
   },
   "dependent_plugins": {}

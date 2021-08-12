@@ -1,75 +1,83 @@
-import { PrivacyPageModule } from './../../privacy/privacy.module';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs-page';
-import { SchedulePage } from '../schedule/schedule';
-
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { TabsPage } from "./tabs-page";
+import { FeedPage } from "../feed/feed";
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: "tabs",
     component: TabsPage,
     children: [
       {
-        path: 'schedule',
+        path: "schedule",
         children: [
           {
-            path: '',
-            component: SchedulePage,
+            path: "",
+            component: FeedPage,
           },
           {
-            path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
-          }
-        ]
+            path: "session/:sessionId",
+            loadChildren: () =>
+              import("../edit-post/edit-post.module").then(
+                (m) => m.EditPostModule
+              ),
+          },
+        ],
       },
       {
-        path: 'speakers',
+        path: "speakers",
         children: [
           {
-            path: '',
-            loadChildren: () => import('../speaker-list/speaker-list.module').then(m => m.SpeakerListModule)
+            path: "",
+            loadChildren: () =>
+              import("../explore-list/explore-list.module").then(
+                (m) => m.ExploreListModule
+              ),
           },
           {
-            path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
+            path: "session/:sessionId",
+            loadChildren: () =>
+              import("../edit-post/edit-post.module").then(
+                (m) => m.EditPostModule
+              ),
           },
-          {
-            path: 'speaker-details/:speakerId',
-            loadChildren: () => import('../speaker-detail/speaker-detail.module').then(m => m.SpeakerDetailModule)
-          }
-        ]
+        ],
       },
       {
-        path: 'map',
+        path: "map",
         children: [
           {
-            path: '',
-            loadChildren: () => import('../../search/search.module').then(m => m.SearchPageModule)
-          }
-        ]
+            path: "",
+            loadChildren: () =>
+              import("../../src/favorite-list/favorite-list.module").then(
+                (m) => m.FavoriteListPageModule
+              ),
+          },
+        ],
       },
       {
-        path: 'account',
+        path: "account",
         children: [
           {
-            path: '',
-            loadChildren: () => import('../account/account.module').then(m => m.AccountModule)
-          }
-        ]
+            path: "",
+            loadChildren: () =>
+              import("../user-account/user-account.module").then(
+                (m) => m.UserAccountPageModule
+              ),
+          },
+        ],
       },
       {
-        path: '',
-        redirectTo: '/app/tabs/schedule',
-        pathMatch: 'full'
-      }
-    ]
-  }
+        path: "",
+        redirectTo: "/app/tabs/schedule",
+        pathMatch: "full",
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TabsPageRoutingModule { }
-
+export class TabsPageRoutingModule {}

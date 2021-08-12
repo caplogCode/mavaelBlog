@@ -2,6 +2,7 @@
   "name": "mavael-blog",
   "type": "angular",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   }
 }

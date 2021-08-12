@@ -1,82 +1,39 @@
 # MAVAEL
-__AUTHORS: MARKUS KARA, ELIAS BRYL, VANESSA UNGER__
+
+**AUTHORS: MARKUS KARA, ELIAS BRYL, VANESSA UNGER**
+
 ## Used Technologies
-- [Ionic]
-- [Angular]
-- [Firebase]
+
+- [Ionic](https://ionicframework.com/)
+- [Angular](https://angular.io/)
+- [Firebase](https://firebase.google.com/?hl=de)
 
 ## Table of Contents
-- [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [App Preview](#app-preview)
-- [Deploying](#deploying)
-  - [Progressive Web App](#progressive-web-app)
-  - [Android](#android)
-  - [iOS](#ios)
 
+- [MAVAEL](#mavael)
+  - [Used Technologies](#used-technologies)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
 
 ## Getting Started
 
-* [Download the installer](https://nodejs.org/) for Node LTS.
-* Install the ionic CLI globally: `npm install -g ionic`
-* Clone this repository: `git clone https://github.com/ionic-team/ionic-conference-app.git`.
-* Run `npm install` from the project root.
-* Run `ionic serve` in a terminal from the project root.
-* Profit. :tada:
+- [Download the installer](https://git-scm.com/downloads) for GIT
+- [Download the installer](https://nodejs.org/) for Node LTS.
+- Open GIT BASH as administrator:
+  - Go to the place, where you want to store the project, e.g.: `cd ~/documents/`
+  - Install the ionic CLI globally: `npm install -g ionic`
+  - Clone this repository: `git clone https://eliasbryl@bitbucket.org/markussyqlo/mavael.git`
+  - Go to the project root: `cd ./mavael`
+  - Run: `./runScript.sh`
+  - Choose option `2) Umgebung einrichten`
+  - Wait until you get asked if you want to run MAVAEL, then choose `2) No`
+  - Choose option `5) Projekt lokal bauen`, then
+    - for **Windows** option `1) Angular (ng serve)`
+    - for **MAC** option `2) Ionic (ionic serve)`
+    - for **Linux** option `3) Nativ ausführen`
+  - After you see `Compiled successfully` the page should load up automatically
+  - If not, open the localhost url from the console manually
 
-_Note: See [How to Prevent Permissions Errors](https://docs.npmjs.com/getting-started/fixing-npm-permissions) if you are running into issues when trying to install packages globally._
+Now you are good to go.
 
-## Contributing
-
-See [CONTRIBUTING.md](https://github.com/ionic-team/ionic-conference-app/blob/master/.github/CONTRIBUTING.md) :tada::+1:
-
-
-## App Preview
-
-### [Menu](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/menu/menu.html)
-
-| Material Design  | iOS  |
-| -----------------| -----|
-| ![Android Menu](/resources/screenshots/android-menu.png) | ![iOS Menu](/resources/screenshots/ios-menu.png) |
-
-
-### [Schedule Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/schedule/schedule.html)
-
-| Material Design  | iOS  |
-| -----------------| -----|
-| ![Android Schedule](/resources/screenshots/android-schedule.png) | ![iOS Schedule](/resources/screenshots/ios-schedule.png) |
-
-### [Speakers Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/speaker-list/speaker-list.html)
-
-| Material Design  | iOS  |
-| -----------------| -----|
-| ![Android Speakers](/resources/screenshots/android-speakers.png) | ![iOS Speakers](/resources/screenshots/ios-speakers.png) |
-
-### [Speaker Detail Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/speaker-detail/speaker-detail.html)
-
-| Material Design  | iOS  |
-| -----------------| -----|
-| ![Android Speaker Detail](/resources/screenshots/android-speaker-detail.png) | ![iOS Speaker Detail](/resources/screenshots/ios-speaker-detail.png) |
-
-### [About Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/about/about.html)
-
-| Material Design  | iOS  |
-| -----------------| -----|
-| ![Android About](/resources/screenshots/android-about.png) | ![iOS About](/resources/screenshots/ios-about.png) |
-
-
-## Deploying
-
-### Progressive Web App
-
-1. Un-comment [these lines](https://github.com/ionic-team/ionic2-app-base/blob/master/src/index.html#L21)
-2. Run `ionic build --prod`
-3. Push the `www` folder to your hosting service
-
-### Android
-
-1. Run `ionic cordova run android --prod`
-
-### iOS
-
-1. Run `ionic cordova run ios --prod`
+Explore and enjoy MAVAEL!

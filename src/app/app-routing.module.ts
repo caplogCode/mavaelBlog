@@ -21,10 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignUpModule)
-  },
-  {
     path: 'app',
     loadChildren: () => import('./pages/tabs-page/tabs-page.module').then(m => m.TabsModule)
   },
@@ -45,16 +41,28 @@ const routes: Routes = [
     loadChildren: () => import('./privacy/privacy.module').then( m => m.PrivacyPageModule)
   },
   {
-    path: 'post-edit',
-    loadChildren: () => import('./post-edit/post-edit.module').then( m => m.PostEditPageModule)
-  },
-  {
-    path: 'post-editer',
-    loadChildren: () => import('./pages/post-editer/post-editer.module').then( m => m.PostEditerPageModule)
-  },
-  {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./src/app/pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
+  },
+  {
+    path: 'favorite-list',
+    loadChildren: () => import('./src/favorite-list/favorite-list.module').then( m => m.FavoriteListPageModule)
+  },
+  {
+    path: 'user-account',
+    loadChildren: () => import('./pages/user-account/user-account.module').then( m => m.UserAccountPageModule)
+  },
+  {
+    path: 'video-intro-player',
+    loadChildren: () => import('./pages/video-intro-player/video-intro-player.module').then( m => m.VideoIntroPlayerPageModule)
+  },
+  {
+    path: 'temp-loading',
+    loadChildren: () => import('./pages/temp-loading/temp-loading.module').then( m => m.TempLoadingPageModule)
   }
  
 ];

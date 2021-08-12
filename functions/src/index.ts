@@ -1,9 +1,15 @@
+import { response } from "express";
+import { app } from "firebase-admin";
 import * as functions from "firebase-functions";
+/* const express = require('express')
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+const aoo = express()
+
+app.get('/timestamp', (request, response) => {
+    response.send(`${Date.now}`)
+}) */
+
+ export const helloWorld = functions.https.onRequest((request, response) => {
+   functions.logger.info("Hello logs!", {structuredData: true});
+  response.send("Hello from Firebase!");
+ });

@@ -1,75 +1,78 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-
-import { UserData } from '../../providers/user-data';
-
-import { UserOptions } from '../../interfaces/user-options';
-import { MenuController } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebaseui from 'firebaseui';
-import * as defaults from '../../app.module'
-import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
-import { Injectable, Type } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { MenuController } from "@ionic/angular";
+import { AngularFireAuth } from "@angular/fire/auth";
+import * as firebaseui from "firebaseui";
+import * as defaults from "../../app.module";
+import { Storage } from "@ionic/storage";
 
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
-  styleUrls: ['./login.scss'],
+  selector: "page-login",
+  templateUrl: "login.html",
+  styleUrls: ["./login.scss"],
 })
-export class LoginPage implements AfterViewInit {
-  private counter = 0
+export class LoginPage implements AfterViewInit, OnInit {
+  ngOnInit() {
+    let user = this.afAuth.currentUser;
+    setTimeout(() => {
+      if (user === null || user === undefined) {
+        this.router.navigateByUrl("/temp-loading");
+      }
+    }, 1000);
+
+    this.menu.enable(false);
+    this.userOpensAppForTheFirstTime();
+  }
+  private counter = 0;
   constructor(
-    public userData: UserData,
     public router: Router,
     private menu: MenuController,
     private afAuth: AngularFireAuth,
-    
-  ) { }
+    private storage: Storage
+  ) {}
   ngAfterViewInit() {
-    this.menu.enable(false)
-    const fUI = new firebaseui.auth.AuthUI(defaults.firebaseVAR.auth())
-    fUI.start('#firebaseui-auth-container', defaults.uiConfig);
-    fUI.delete
+    this.menu.enable(false);
+    const fUI = new firebaseui.auth.AuthUI(defaults.firebaseVAR.auth());
+    fUI.start("#firebaseui-auth-container", defaults.uiConfig);
+    fUI.delete;
   }
   onChangeIndex(): number {
-    this.counter++
-    return this.counter
-
+    this.counter++;
+    return this.counter;
   }
   changeMethodIcon(): string {
     if (this.onChangeTitle() === "Login") {
-      return "person-add"
-    }
-    else
-      return "log-out"
+      return "person-add";
+    } else return "log-out";
   }
   onChangeTitle(): string {
     if (this.onChangeAuthMethod() === true) {
-      return "Login"
-    }
-    else
-      return "Registrieren"
+      return "Login";
+    } else return "Registrieren";
   }
 
   onChangeAuthMethod(): boolean {
     if (this.onChangeIndex() % 2 === 0) {
-      return true
-    }
-    else
-      return false
+      return true;
+    } else return false;
   }
 
-/*   onLogin(form: NgForm) {
-    this.submitted = true;
+  userOpensAppForTheFirstTime() {
+    this.storage.get("firstTimeAuth").then((valueFirst) => {
+      this.storage.get("isAuth").then((value) => {
+        if (!value && valueFirst == false) {
+          this.storage.set("firstTimeAuth", true);
+        }
+      });
+    });
+  }
 
-    if (form.valid) {
-      this.userData.login(this.login.email);
-      this.router.navigateByUrl('/app/tabs/schedule');
-    }
-  } */
-
-  onSignup() {
-    this.router.navigateByUrl('/signup');
+  lookForLoggedInUser(): boolean {
+    this.afAuth.currentUser.then((user) => {
+      if (user !== null || user !== undefined) {
+        return false;
+      }
+    });
+    return true;
   }
 }

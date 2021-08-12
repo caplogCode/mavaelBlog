@@ -1,0 +1,30 @@
+body {
+    background-image: url("../../../assets/img/logo.png")
+}
+ion-card {
+  border-radius: 30px !important;
+  height: 85%;
+  width: 100%;
+  margin-top: 30%;
+  padding-bottom: 0px;
+  margin-bottom: -50px !important;
+  margin-left: 0px;
+  bottom: 0px;
+  position: absolute;
+}
+
+ion-button {
+  fill: outline;
+  size: large;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+  }
+}
+

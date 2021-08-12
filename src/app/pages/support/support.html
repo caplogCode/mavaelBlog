@@ -9,19 +9,28 @@
 
 <ion-content>
   <div class="support-logo">
-    <img src="assets/img/logo.png" alt="MAVAEL Logo">
+    <img src="assets/img/logo.png" alt="MAVAEL Logo" />
   </div>
 
   <form #submitForm="ngForm" novalidate (ngSubmit)="submit(submitForm)">
     <ion-list lines="none">
       <ion-item>
         <ion-label position="stacked" color="primary">Feedback</ion-label>
-        <ion-textarea [(ngModel)]="supportMessage" name="supportQuestion" #supportQuestion="ngModel" rows="6" required></ion-textarea>
+        <ion-textarea
+          [(ngModel)]="supportMessage"
+          name="supportQuestion"
+          #supportQuestion="ngModel"
+          rows="6"
+          required
+        ></ion-textarea>
       </ion-item>
     </ion-list>
 
     <ion-text color="danger">
-      <p [hidden]="supportQuestion.valid || submitted === false" class="ion-padding-start">
+      <p
+        [hidden]="supportQuestion.valid || submitted === false"
+        class="ion-padding-start"
+      >
         Zum senden, bitte Feedback eingeben.
       </p>
     </ion-text>

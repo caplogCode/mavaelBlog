@@ -1,15 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Camera } from '@ionic-native/camera/ngx';
-import { IonicModule } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
-import { PhotoService } from '../../services/photo.service';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { Camera } from "@ionic-native/camera/ngx";
+import { Storage } from "@ionic/storage";
 
-import { AddPostPage } from './add-post.page';
+import { AddPostPage } from "./add-post.page";
 
-describe('AddPostPage', () => {
+describe("AddPostPage", () => {
   let component: AddPostPage;
   let fixture: ComponentFixture<AddPostPage>;
-
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,9 +22,7 @@ describe('AddPostPage', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
-
-

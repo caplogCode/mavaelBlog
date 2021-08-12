@@ -26,6 +26,9 @@ import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ng
 import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
 
+//Video-Intro Player
+import { VideoPlayer } from '@ionic-native/video-player/ngx';
+
 export const firebaseVAR = firebase.initializeApp(environment.firebaseConfig)
 export const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -52,7 +55,7 @@ export var uiConfig = {
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: '/app/tabs/schedule',
+  signInSuccessUrl: '/temp-loading',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -83,7 +86,7 @@ export var uiConfig = {
     FirebaseUIModule.forRoot(uiConfig)
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar, FirebaseAuthentication, AngularFireAuth],
+  providers: [InAppBrowser, SplashScreen, StatusBar, FirebaseAuthentication, AngularFireAuth, VideoPlayer],
   bootstrap: [AppComponent]
 })
 export class AppModule {

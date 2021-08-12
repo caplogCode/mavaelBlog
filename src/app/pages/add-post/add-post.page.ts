@@ -1,23 +1,13 @@
 import { AngularFireAuth } from "@angular/fire/auth";
-import {
-  Component,
-  ElementRef,
-  Inject,
-  ViewChild,
-  AfterViewInit,
-  OnInit,
-  Injectable,
-} from "@angular/core";
-import { ConferenceData } from "../../providers/conference-data";
+import { Component, OnInit, Injectable } from "@angular/core";
 import { Platform, LoadingController, ToastController } from "@ionic/angular";
-import { DOCUMENT } from "@angular/common";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
 import { PhotoLibrary } from "@ionic-native/photo-library/ngx";
 import { Mavael } from "../../models/mavael";
-import { PhotoService } from "../../services/photo.service";
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+
 @Component({
   selector: "app-add-post",
   templateUrl: "./add-post.page.html",
@@ -34,8 +24,9 @@ export class AddPostPage implements OnInit {
   postId: string;
   body: string;
   timestamp: number;
-  userFireUID: string = ""
+  userFireUID: string = "";
   private userModel: Mavael;
+  tags: string = "";
 
   constructor(
     private afs: AngularFirestore,
@@ -47,13 +38,13 @@ export class AddPostPage implements OnInit {
     private afAuth: AngularFireAuth
   ) {}
 
-   ngOnInit() {
+  ngOnInit() {
     setTimeout(() => {
-      this.getUID()
+      this.getUID();
     }, 500);
-   
   }
 
+  /* IN CONSTRUCTION
   takePhoto() {
     this.photoLibrary
       .requestAuthorization()
@@ -82,41 +73,137 @@ export class AddPostPage implements OnInit {
         });
       })
       .catch((err) => console.log("permissions weren't granted"));
-  }
+  } */
 
-  getRandomNumber(max) : number{ 
+  getRandomNumber(max): number {
     return Math.floor(Math.random() * max);
   }
+  getColor() {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
 
-  getCardFomatColor(rdNumber: number) : string{
-    switch(rdNumber){
-      case 1 : {
-        return 'success'
-      }
-      case 2 : {
-        return 'primary'
-      }
-      case 3 : {
-        return 'tertiary'
-      }
-      case 4 : {
-        return 'warning'
-      }
-      case 5 : {
-        return 'light'
-      }
-      case 6 : {
-        return 'medium'
-      }
-      case 7 : {
-        return 'secondary'
-      }
+  getRandomPastelleColor() {
+    // Generate 20 colors
+    for (var i = 20; i--; ) {
+      var item = document.createElement("div");
+      item.style.cssText = `
+      display:inline-block; 
+      padding: 2em;
+      margin:5px; 
+      border-radius:50%;
+      background: ${this.getColor()};
+    `;
+      document.body.appendChild(item);
+    }
+  }
+
+  lookForTag(tag: string) {
+    console.log(tag);
+    if (tag === "liebe") {
+      this.disableChips(1);
+    }
+    if (tag === "freizeit") {
+      this.disableChips(2);
+    }
+    if (tag === "business") {
+      this.disableChips(3);
+    }
+    if (tag === "random") {
+      this.disableChips(4);
+    }
+    if (tag === "sonstiges") {
+      this.disableChips(5);
     }
 
+    this.tags += "," + tag;
+  }
+
+  disableChips(nm: number) {
+    let loveChip = document.getElementById("love-chip");
+    let freiChip = document.getElementById("frei-chip");
+    let busiChip = document.getElementById("busi-chip");
+    let randChip = document.getElementById("rand-chip");
+    let sontChip = document.getElementById("sont-chip");
+
+    if (nm === 1) {
+      loveChip.style.display = "none";
+    }
+    if (nm === 2) {
+      freiChip.style.display = "none";
+    }
+    if (nm === 3) {
+      busiChip.style.display = "none";
+    }
+    if (nm === 4) {
+      randChip.style.display = "none";
+    }
+    if (nm === 5) {
+      sontChip.style.display = "none";
+    }
+  }
+
+  getCardFomatColor(rdNumber: number): string {
+    switch (rdNumber) {
+      case 1: {
+        return "lilac";
+      }
+      case 2: {
+        return "cameo-pink";
+      }
+      case 3: {
+        return "pale-pink";
+      }
+      case 4: {
+        return "lotion";
+      }
+      case 5: {
+        return "non-photo-blue";
+      }
+      case 6: {
+        return "pale-cyan";
+      }
+      case 7: {
+        return "columbia-blue";
+      }
+      case 8: {
+        return "lavender-gray";
+      }
+      case 9: {
+        return "tea-green";
+      }
+      case 10: {
+        return "eggshell";
+      }
+      case 11: {
+        return "cultured";
+      }
+      case 12: {
+        return "champagne";
+      }
+      case 13: {
+        return "beau-blue";
+      }
+      case 14: {
+        return "beau-blue";
+      }
+      case 15: {
+        return "azureish-white";
+      }
+      case 16: {
+        return "lavender-blush";
+      }
+      case 17: {
+        return "queen-pink";
+      }
+    }
   }
 
   test() {
     this.addTask();
+  }
+
+  updateLastPost(uid: any, lastPostId: any) {
+    this.afs.collection("users").doc(uid).update({ lastPostId: lastPostId });
   }
   async addTask() {
     /*     this.title && this.body */
@@ -129,19 +216,20 @@ export class AddPostPage implements OnInit {
 
       loading.present();
       const unixTime = Date.now();
-      const date = new Date(unixTime*1000)
-      var today = new Date()
-      var dd = String(today.getDate()).padStart(2, '0')
-      var mm = String(today.getMonth() + 1).padStart(2, '0')
-      var yyyy = today.getFullYear()
-      
-      const a = dd + '.' + mm + '.' + yyyy
-      console.log(a)
-      
-      const dateFormatted = a
+      const date = new Date(unixTime * 1000);
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, "0");
+      var mm = String(today.getMonth() + 1).padStart(2, "0");
+      var yyyy = today.getFullYear();
+
+      const a = dd + "." + mm + "." + yyyy;
+      console.log(a);
+
+      const dateFormatted = a;
       const postId = this.afs.createId();
       const uid = (await this.afAuth.currentUser).uid;
       const username = (await this.afAuth.currentUser).displayName;
+      //Die daten aus dem Post werden in die Models der Datenbank gepusht in 2 verschiedene Collections / deswegen Redundanz
       this.afs
         .collection("users")
         .doc(uid)
@@ -153,34 +241,49 @@ export class AddPostPage implements OnInit {
           body: this.body,
           timestamp: dateFormatted,
           user: username,
-          cardColor: this.getCardFomatColor(this.getRandomNumber(7)),
-          uid: this.userFireUID
+          cardColor: this.getCardFomatColor(this.getRandomNumber(17)),
+          uid: this.userFireUID,
+          tags: this.tags,
+          timestampMillis: Date.now(),
+          like: 0,
+          dislike: 0,
+          likers: "",
+          bookMarkers:""
         })
         .then(() => {
-
           loading.dismiss();
           this.toast("Beitrag wurde erfolgreich gepostet!", "success");
           this.router.navigate(["//app/tabs/schedule"]);
           this.afs
-          .collection("posts")
-          .doc(postId)
-          .set({
-            postId: postId,
-            title: this.title,
-            body: this.body,
-            timestamp: dateFormatted,
-            user: username,
-            cardColor: this.getCardFomatColor(this.getRandomNumber(7)),
-            uid: this.userFireUID
-          })
-          .then(() => {
-            loading.dismiss();
-            //this.toast("Beitrag wurde erfolgreich gepostet!", "success");
-          })
-          .catch((error) => {
-            loading.dismiss();
-            this.toast(error.message, "danger");
-          });
+            .collection("posts")
+            .doc(postId)
+            .set({
+              postId: postId,
+              title: this.title,
+              body: this.body,
+              timestamp: dateFormatted,
+              user: username,
+              cardColor: this.getCardFomatColor(this.getRandomNumber(17)),
+              uid: this.userFireUID,
+              tags: this.tags,
+              timestampMillis: Date.now(),
+              like: 0,
+              dislike: 0,
+              likers: "",
+              bookMarkers:""
+            })
+            .then(() => {
+              this.updateLastPost(
+                this.userFireUID,
+                this.title + "," + this.body
+              );
+              loading.dismiss();
+              //this.toast("Beitrag wurde erfolgreich gepostet!", "success");
+            })
+            .catch((error) => {
+              loading.dismiss();
+              this.toast(error.message, "danger");
+            });
         })
         .catch((error) => {
           loading.dismiss();
@@ -188,27 +291,21 @@ export class AddPostPage implements OnInit {
         });
     }
   }
-  async getAuthUsername():Promise<string> {
-    const uid = (await this.afAuth.currentUser).displayName
-    document.getElementById('userInputName').innerText = uid 
-    return uid
-}
-async getUID() {
-  let userUUID = ""
- this.afAuth.currentUser.then((value)=>{
-  userUUID = value.uid
-this.userFireUID = userUUID
-  console.log(this.userFireUID)
- })
+  async getAuthUsername(): Promise<string> {
+    const uid = (await this.afAuth.currentUser).displayName;
+    document.getElementById("userInputName").innerText = uid;
+    return uid;
+  }
+  async getUID() {
+    let userUUID = "";
+    this.afAuth.currentUser.then((value) => {
+      userUUID = value.uid;
+      this.userFireUID = userUUID;
+      console.log(this.userFireUID);
+    });
+  }
 
-}
-
-  pushToDB(
-    collection: string,
-    document: string,
-    subCollection: string,
-    subDocument
-  ) {
+  pushToDB(collection: string, document: string, subCollection: string) {
     this.afs
       .collection(collection)
       .doc(document)

@@ -72,5 +72,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "com.moust.cordova.videoplayer": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/moust/cordova-plugin-videoplayer.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -1,33 +1,40 @@
+import { OnInit } from '@angular/core';
 import { AfterViewInit, Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 import { AlertController } from '@ionic/angular';
-
-import { UserData } from '../../providers/user-data';
-
+import { Storage } from "@ionic/storage";
+import { AngularFirestore } from "@angular/fire/firestore/";
 
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html',
   styleUrls: ['./account.scss'],
 })
-export class AccountPage implements AfterViewInit {
+export class AccountPage implements AfterViewInit, OnInit {
   username: string;
+  hobby: string
+  beschreibung: string
+  uid: string
 
   constructor(
+    private storage: Storage,
     public alertCtrl: AlertController,
     public router: Router,
-    public userData: UserData,
     private afAuth: AngularFireAuth,
+    private afs: AngularFirestore
   ) { }
+  ngOnInit(){
 
+  }
+ionViewWillEnter(){
+  this.storage.get("userIdCurrent").then((value) =>{
+    this.uid = value
+  })
+}
   ngAfterViewInit() {
     this.getUsername();
-  }
-
-  updatePicture() {
-    console.log('Clicked to update picture');
   }
 
   // Present an alert with the current username populated
@@ -43,7 +50,6 @@ export class AccountPage implements AfterViewInit {
         {
           text: 'Ok',
           handler: (data: any) => {
-            this.userData.setUsername(data.username);
             this.afAuth.currentUser.then((user)=>{
               user.updateProfile({
                 displayName: data.username
@@ -109,9 +115,56 @@ export class AccountPage implements AfterViewInit {
       inputs: [
         {
           type: 'text',
-          name: 'username',
-          value: this.username,
-          placeholder: 'username'
+          name: 'Passwort',
+          placeholder: 'Passwort'
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async changeHobby() {
+    const alert = await this.alertCtrl.create({
+      header: 'Hobby ändern',
+      buttons: [
+        'Abbrechen',
+        {
+          text: 'Ok',
+          handler: (data: any) => {
+    
+         this.afs.collection("users").doc(this.uid)
+         .update({"hobby": data[0]})
+          }
+        }
+      ],
+      inputs: [
+        {
+          value: this.hobby,
+          placeholder: 'Fußball...'
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async changeBeschreibung() {
+    const alert = await this.alertCtrl.create({
+      header: 'Beschreibung einfügen',
+      buttons: [
+        'Abbrechen',
+        {
+          text: 'Ok',
+          handler: (data: any) => {
+    
+         this.afs.collection("users").doc(this.uid)
+         .update({"beschreibung": data[0]})
+          }
+        }
+      ],
+      inputs: [
+        {
+          value: this.beschreibung,
+          placeholder: 'Ich bin ...'
         }
       ]
     });
@@ -119,8 +172,9 @@ export class AccountPage implements AfterViewInit {
   }
 
   logout() {
-    this.userData.logout();
-    this.router.navigateByUrl('/login');
+    this.storage.clear();
+    this.afAuth.signOut();
+    return this.router.navigateByUrl("/login");
   }
 
   support() {
