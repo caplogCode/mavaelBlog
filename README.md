@@ -22,7 +22,7 @@
 - Open GIT BASH as administrator:
   - Go to the place, where you want to store the project, e.g.: `cd ~/documents/`
   - Install the ionic CLI globally: `npm install -g ionic`
-  - Clone this repository: `git clone https://eliasbryl@bitbucket.org/markussyqlo/mavael.git`
+  - Clone this repository: `git clone https://github.com/caplogCode/mavaelBlog.git`
   - Go to the project root: `cd ./mavael`
   - Run: `./runScript.sh`
   - Choose option `2) Umgebung einrichten`
